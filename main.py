@@ -5,10 +5,9 @@ from pydub import AudioSegment
 import random
 SECONDS_TO_MS_CONSTANT = 1000
 END_AUDIO_MIN_LENGTH_SECONDS = 30
-
-
-audio1 = AudioSegment.from_file("file1.mp3")
-audio2 = AudioSegment.from_file("file2.mp3")
+AUDIO_DIRECTORY = "testing/"
+audio1 = AudioSegment.from_file(AUDIO_DIRECTORY + "file1.mp3")
+audio2 = AudioSegment.from_file(AUDIO_DIRECTORY + "file2.mp3")
 
 audios = [audio1, audio2]
 
@@ -28,13 +27,13 @@ for mixNum in range(numberOfVariants):
     segments = [ audios[i][audiosStartStampMs[i]:audiosStartStampMs[i]+audiosLengths[i]] for i in range(numberOfAudios) ]
 
     combined = segments[0]
-    segments[0].export("file" + str(0) + "SEGMENT.mp3", format="mp3")
+    segments[0].export(AUDIO_DIRECTORY + "file" + str(0) + "SEGMENT.mp3", format="mp3")
     for i in range(numberOfAudios - 1):
-        segments[i+1].export("file" + str(i+1) + "SEGMENT.mp3", format="mp3")
+        segments[i+1].export(AUDIO_DIRECTORY + "file" + str(i+1) + "SEGMENT.mp3", format="mp3")
         combined = combined.overlay(segments[i+1])
 
 
 
-    combined.export("mixup" + str(mixNum) + ".mp3", format="mp3")
+    combined.export(AUDIO_DIRECTORY + "mixup" + str(mixNum) + ".mp3", format="mp3")
 
 
