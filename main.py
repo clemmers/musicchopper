@@ -5,9 +5,21 @@ from pydub import AudioSegment
 import os
 import random
 from datetime import datetime
+
+
+#
+# EDITABLE VARIABLES
+# \/ \/ \/ \/ \/ \/ \/
+AUDIO_SEGMENT_MIN_LENGTH_SECONDS = 2
+AUDIO_SEGMENT_MAX_LENGTH_SECONDS = 10
+NUMBER_OF_VARIANTS = 5
+# /\ /\ /\ /\ /\ /\ /\
+# EDITABLE VARIABLES
+#
+
+
 SECONDS_TO_MS_CONSTANT = 1000
 END_AUDIO_MIN_LENGTH_SECONDS = 30
-
 
 #DEFAULT_DIRECTORY = "testing/"
 DEFAULT_DIRECTORY = "./"
@@ -24,8 +36,7 @@ if not os.path.exists(CURRENT_PROGRAM_DIRECTORY):
     os.makedirs(CURRENT_PROGRAM_DIRECTORY)
 
 
-AUDIO_SEGMENT_MIN_LENGTH_SECONDS = 2
-AUDIO_SEGMENT_MAX_LENGTH_SECONDS = 10
+
 audios = []
 print("finding audio files...")
 for filename in os.listdir(DEFAULT_INPUTS_DIRECTORY):
@@ -36,7 +47,7 @@ print("finished finding audio files")
 
 numberOfAudios = len(audios)
 
-numberOfVariants = 5
+
 
 finalsDirectory = CURRENT_PROGRAM_DIRECTORY + "finals/"
 inputsDirectory = CURRENT_PROGRAM_DIRECTORY + "inputs/"
@@ -52,8 +63,8 @@ for i in range(numberOfAudios):
     print("audio file " + str(i+1) + " of " + str(numberOfAudios) + " copied...")
 print("audio files copied")
 
-for mixNum in range(numberOfVariants):
-    print("starting mix " + str(mixNum+1) + " of " + str(numberOfVariants) + "...")
+for mixNum in range(NUMBER_OF_VARIANTS):
+    print("starting mix " + str(mixNum+1) + " of " + str(NUMBER_OF_VARIANTS) + "...")
 
 
 
